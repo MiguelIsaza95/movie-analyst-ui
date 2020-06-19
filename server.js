@@ -5,6 +5,15 @@ var backendHost = process.env.BACK_HOST || 'localhost';
 // Create our express app
 var app = express();
 
+//HTTPS
+
+const https = require("https"), fs = require("fs");
+
+const options = {
+  key: fs.readFileSync("path"),
+  cert: fs.readFileSync("path")
+};
+
 // Set the view engine to use EJS as well as set the default views directory
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public/views/');
@@ -74,4 +83,7 @@ app.get('/pending', function(req, res){
     })
 })
 
+// HTTPS init server
+
 app.listen(3030);
+https.createServer(options, app).listen(8080);
