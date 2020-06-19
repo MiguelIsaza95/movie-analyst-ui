@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 // The homepage route of our application does not interface with the MovieAnalyst API and is always accessible. We won’t use the getAccessToken middleware here. We’ll simply render the index.ejs view.
-app.get('/ui', function(req, res){
+app.get('/', function(req, res){
   res.render('index');
 })
 
